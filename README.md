@@ -3,5 +3,5 @@
 
 ```toml
 [dependencies]
-dingtalkbot = {path = "./dingtalkbot" }
+dingtalkbot = {path = "./dingtalk-bot" }
 ```
