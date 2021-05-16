@@ -11,8 +11,9 @@ use dingtalkbot;
 
 #[async_std::main]
 async fn main() {
-let client = dingtalkbot::DingTalkBotClient;
-
+  let client = dingtalkbot::DingTalkBotClient::new("YOUR  DINGTALK URL","YOUR DINGTALK SECRET");
+  client.send()
+  
 }
 
 
