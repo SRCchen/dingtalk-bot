@@ -1,19 +1,13 @@
 use chrono::prelude::*;
 use hmac::{Hmac, Mac, NewMac};
 use sha2::Sha256;
-use base64::{encode, decode};
-use url::{Url, Host, Position};
+use base64::encode;
+use url::Url;
 use serde::{Serialize, Deserialize};
 use serde_json::json;
 use std::fmt::Error;
 
-
 extern crate chrono;
-
-enum MsgType {
-    MarkDown,
-    Text,
-}
 
 #[derive(Serialize, Deserialize)]
 struct Data {
@@ -61,32 +55,22 @@ impl DingTalkBotClient {
         }
     }
 
-    pub fn at_somebody_by_mobile(mut self, phone_number_list: Vec<String>) -> DingTalkBotClient {
-        let newclient = DingTalkBotClient {
-            at: At {
-                atmobiles: phone_number_list,
-                atuserids: vec![],
-            },
-            ..self
-        };
-        newclient
+    pub fn at_somebody_by_mobile(&mut self, phone_number_list: Vec<String>) {
+
+        self.at = At {
+            atmobiles: phone_number_list,
+            atuserids: vec![],
+        }
     }
-    pub fn at_somebody_by_id(mut self, user_id_list: Vec<String>) -> DingTalkBotClient {
-        let newclient = DingTalkBotClient {
-            at: At {
-                atmobiles: vec![],
-                atuserids: user_id_list,
-            },
-            ..self
-        };
-        newclient
+    pub fn at_somebody_by_id(&mut self, user_id_list: Vec<String>) {
+
+        self.at = At {
+            atmobiles: vec![],
+            atuserids: user_id_list,
+        }
     }
-    pub fn at_all(self) -> DingTalkBotClient {
-        let newclient = DingTalkBotClient {
-            is_atall: true,
-            ..self
-        };
-        newclient
+    pub fn at_all(&mut self) {
+        self.is_atall = true
     }
     pub async fn send_msg(self, title: &str, content: &str) -> Result<String, Error> {
         type HmacSha256 = Hmac<Sha256>;
