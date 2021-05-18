@@ -13,7 +13,7 @@ use dingtalkbot;
 async fn main() {
   let client = dingtalkbot::DingTalkBotClient::new("YOUR  DINGTALK URL","YOUR DINGTALK SECRET");
   let res = client.send_msg("YOUR MESSAGE TITLE","YOUR MESSAGE CONTEXT").await.unwrap();
-  println!(res)
+  println!("{}",res)
 }
 
 
