@@ -3,7 +3,7 @@
 
 ```toml
 [dependencies]
-dingtalkbot = {git = https://github.com/SRCchen/dingtalk-bot" }
+dingtalkbot = {git = "https://github.com/SRCchen/dingtalk-bot" }
 ```
 ```rust
 use dingtalkbot;
