@@ -1,5 +1,5 @@
 [package]
-name = "dingtalk-bot"
+name = "dingtalkbot"
 version = "0.1.0"
 authors = ["Scc <ccg0616@hotmail.com>"]
 edition = "2018"
